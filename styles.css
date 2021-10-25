@@ -11,6 +11,12 @@ body {
     hsl(200, 100%, 50%),
     hsl(175, 100%, 50%)
   );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* removes scrollbar */
+  overflow: hidden;
 }
 
 .clock {
@@ -33,6 +39,7 @@ body {
   /* background-color: red; */
   /* Position the numbers around the clock correctly using transform need a different value for each number, set to a variable*/
   transform: rotate(var(--rotation));
+  font-size: 1.5rem;
 }
 
 .clock .number1 {
@@ -89,8 +96,6 @@ body {
   position: absolute;
   bottom: 50%;
   left: 50%;
-  width: 10px;
-  height: 40%;
   background-color: black;
   border: 1px solid white;
   border-top-left-radius: 10px;
@@ -98,5 +103,39 @@ body {
   /* translates the object by 50% of it's width backwards so hand is centered on clock */
   /* transform-origin is where we want the transform of the rotating hand to come from */
   transform-origin: bottom;
+  /* so that clock hand is on top of the numbers. */
+  z-index: 10;
   transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+/* / circle element */
+.clock::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  z-index: 11;
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.clock .hand.second {
+  width: 3px;
+  height: 45%;
+  background-color: red;
+}
+
+.clock .hand.minute {
+  width: 7px;
+  height: 40%;
+  background-color: black;
+}
+
+.clock .hand.hour {
+  width: 10px;
+  height: 35%;
+  background: black;
 }
