@@ -83,3 +83,20 @@ body {
 /* .clock .number12 {
   --rotation: 360deg;
 } */
+
+.clock .hand {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 10px;
+  height: 40%;
+  background-color: black;
+  border: 1px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* translates the object by 50% of it's width backwards so hand is centered on clock */
+  /* transform-origin is where we want the transform of the rotating hand to come from */
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
